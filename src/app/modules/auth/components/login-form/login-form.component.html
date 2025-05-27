@@ -1,0 +1,52 @@
+<div class="flex min-h-screen">
+
+  <!-- Sección izquierda -->
+  <div class="hidden md:flex w-1/2 items-center justify-center text-white p-8 bg-neutral-white">
+    <div class="text-center w-full px-4">
+      <div class="mb-6">
+        <svg class="w-16 h-16 mx-auto text-neutral-white" viewBox="0 0 24 24" fill="currentColor">...</svg>
+      </div>
+      <div class="h-100 w-full flex items-center justify-center">
+        <img src="assets/images/Logo-fondo-blanco.png" alt="Logo Pawtner" class="max-h-full max-w-full object-contain" />
+      </div>
+    </div>
+  </div>
+  <!-- Sección derecha (formulario) -->
+  <div class="w-full md:w-1/2 bg-neutral-grayLightest flex items-center justify-center p-6">
+    <div class="w-full max-w-sm bg-white rounded-xl shadow-lg p-8">
+      <h1 class="text-2xl font-title text-primary mb-6 text-center">INICIO DE SESIÓN</h1>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-4">
+        <div>
+          <label for="username" class="block text-sm font-medium text-neutral-grayDark">Nombre de usuario</label>
+          <input id="username" type="text" formControlName="username"
+            class="mt-1 w-full px-4 py-2 border border-neutral-grayLighter rounded-md focus:outline-none focus:ring-2 focus:ring-primary" 
+            placeholder="username" />
+          <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched" class="text-sm text-state-error mt-1">
+            Nombre de usuario requerido
+          </div>
+        </div>
+
+        <div>
+          <label for="password" class="block text-sm font-medium text-neutral-grayDark">Contraseña</label>
+          <input id="password" type="password" formControlName="password"
+            class="mt-1 w-full px-4 py-2 border border-neutral-grayLighter rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+            placeholder="••••••••" />
+          <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-sm text-state-error mt-1">
+            Contraseña requerida
+          </div>
+        </div>
+
+        <button type="submit"
+          class="w-full bg-primary text-white py-2 rounded-md hover:bg-secondary transition-colors font-medium">
+          Iniciar Sesión
+        </button>
+
+        <p class="text-sm text-center text-neutral-grayDark mt-4">
+          ¿No tienes una cuenta aún? <br />
+          <b class="text-secondary">Comunícate con tu empresa</b>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
